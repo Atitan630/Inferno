@@ -5,6 +5,9 @@ Simple command line tool for virus creation. Written on C#
   <img src="images/logo.png"/>
 </p>
 
+# :warning: Attention.
+Some antiviruses may remove the program.
+
 # :page_facing_up: Download:
 * Download [Inferno.zip](https://raw.githubusercontent.com/LimerBoy/Inferno/master/bin/Inferno.zip) for windows.
 
@@ -109,6 +112,10 @@ Simple command line tool for virus creation. Written on C#
 	Set cursor position (x, y).
 	* x 
 	* y
+* MAXIMIZE_ALL_WINDOWS  
+	Maximize all opened windows.
+* MINIMIZE_ALL_WINDOWS  
+	Minimize all opened windows.
 * STATUS  
 	Get status.
 	* IN_SANDBOXIE `Check if program in SandBox`
@@ -117,6 +124,7 @@ Simple command line tool for virus creation. Written on C#
 	* IS_ADMIN `Check if user is admin`
 	* USER_IS_ACTIVE `Check if user is active`
 	* BATTERY `Battery information`
+	* ANTIVIRUS `Get installed antivirus name`
 * MONITOR  
 	Make something with monitors.
 	* ROTATE `Rotate all monitors`
