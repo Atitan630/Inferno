@@ -251,6 +251,16 @@ namespace Inferno
                         activity.userIsActive();
                         break;
                     }
+                case "MINIMIZE_ALL_WINDOWS": // (null)
+                    {
+                        activity.minimizeAllWindows();
+                        break;
+                    }
+                case "MAXIMIZE_ALL_WINDOWS": // (null)
+                    {
+                        activity.maximizeAllWindows();
+                        break;
+                    }
 
                 // Autorun
                 case "AUTORUN": // ( state, mode, filename )
@@ -328,6 +338,10 @@ namespace Inferno
                         {
                             status.betteryLevel();
                         } else
+                            if(s_mode == "ANTIVIRUS")
+                        {
+                            status.antivirus();
+                        }
                         {
                             // err
                             output.error = true;

