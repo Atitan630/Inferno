@@ -24,6 +24,9 @@ def load():
 		print("Removing " + arc)
 		os.remove(arc)
 
+	# Change encoding to 1251
+	os.system("chcp 1251 >NUL")
+
 	# Return Inferno.exe location
 	return tmp + "\\Inferno.exe"
 
@@ -39,9 +42,9 @@ def execute(command, arg1 = "", arg2 = "", arg3 = ""):
 	# Decode JSON
 	output = json.loads(
 		# Get output
-		process.communicate()
+		process.communicate()[0]
 		# Decode bytes
-		[0].decode()
+		.decode('1251')
 		)
 	# If error - show message
 	if output["error"]:
