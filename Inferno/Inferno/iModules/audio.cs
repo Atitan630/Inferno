@@ -1,5 +1,4 @@
-﻿using AudioSwitcher.AudioApi.CoreAudio;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -63,8 +62,7 @@ namespace Inferno
         // Set system volume
         public static void setVolume(string volume)
         {
-            CoreAudioDevice defaultPlaybackDevice = new CoreAudioController().DefaultPlaybackDevice;
-            //Debug.WriteLine("Current Volume:" + defaultPlaybackDevice.Volume);
+            AudioSwitcher.AudioApi.CoreAudio.CoreAudioDevice defaultPlaybackDevice = new AudioSwitcher.AudioApi.CoreAudio.CoreAudioController().DefaultPlaybackDevice;
             defaultPlaybackDevice.Volume = Int32.Parse(volume);
             core.Exit("System volume set to " + volume, output);
         }
@@ -73,7 +71,7 @@ namespace Inferno
         // Get system volume
         public static void getVolume()
         {
-            CoreAudioDevice defaultPlaybackDevice = new CoreAudioController().DefaultPlaybackDevice;
+            AudioSwitcher.AudioApi.CoreAudio.CoreAudioDevice defaultPlaybackDevice = new AudioSwitcher.AudioApi.CoreAudio.CoreAudioController().DefaultPlaybackDevice;
             output.volume = defaultPlaybackDevice.Volume;
             core.Exit("System volume received!", output);
         }

