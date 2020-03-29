@@ -5,8 +5,8 @@ Simple command line tool for virus creation. Written on C#
   <img src="images/logo.png"/>
 </p>
 
-# :warning: Attention.
-Some antiviruses may remove the program.
+# :warning: Attention:
+* Some antiviruses may remove the program.
 
 # :page_facing_up: Download:
 * Download [Inferno.zip](https://raw.githubusercontent.com/LimerBoy/Inferno/master/bin/Inferno.zip) for windows.
@@ -76,6 +76,9 @@ Some antiviruses may remove the program.
 	Record audio from microphone and save to file.
 	* filename `Audio output filename`
 	* seconds  `Recording secounds`
+* KEYLOGGER  
+	Saves all keystrokes to the specified file.
+	* filename `Log output filename`
 * AUDIO_SPEAK  
 	Text to speech.
 	* text `Just text`
@@ -184,6 +187,9 @@ Some antiviruses may remove the program.
 	Check if port is open.
 	* ip   `Target ip or hostname`
 	* port `Target port`
+* NETWORK_WLAN_SCANNER  
+	Scan local network.
+	* 1-254 `How much hosts`
 * BYPASS_DISABLE_DEFENDER  
 	Disable Windows Defender.
 * BYPASS_DISABLE_UAC 
@@ -210,3 +216,43 @@ Some antiviruses may remove the program.
 	* REBOOT
 	* LOGOFF
 	* HIBERNATE
+* BRUTEFORCE_FTP  
+	Try login to FTP by host, user, pass.
+	* hostname
+	* username
+	* password
+* BRUTEFORCE_SSH  
+	Try login to SSH by host, user, pass.
+	* hostname
+	* username
+	* password
+* BRUTEFORCE_TELNET  
+	Try login to Telnet by host, user, pass.
+	* hostname
+	* username
+	* password
+* FLOOD_HTTP  
+	HTTP flood ddos attack.
+	* host    `Target`
+	* threads `Threads count`
+	* seconds `Seconds`
+* FLOOD_SLOWLORIS  
+	SLOWLORIS method ddos attack.
+	* host:port `Target`
+	* threads   `Threads count`
+	* seconds   `Seconds`
+* FLOOD_UDP  
+	UDP method ddos attack.
+	* host:port `Target`
+	* threads   `Threads count`
+	* seconds   `Seconds`
+* FLOOD_SYN  
+	SYN method ddos attack.
+	* host:port `Target`
+	* threads   `Threads count`
+	* seconds   `Seconds`
+* FLOOD_ICMP  
+	ICMP method ddos attack.
+	* host    `Target`
+	* threads `Threads count`
+	* seconds `Seconds`
