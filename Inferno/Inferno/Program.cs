@@ -470,12 +470,12 @@ namespace Inferno
                         break;
                     }
 
-                // Bypass
-                case "BYPASS_DISABLE_DEFENDER": // (null)
-                    {
-                        bypass.disableDefender();
-                        break;
-                    }
+                // Bypass (DELETED)
+                //case "BYPASS_DISABLE_DEFENDER": // (null)
+                //    {
+                //        bypass.disableDefender();
+                //        break;
+                //    }
                 case "BYPASS_ENABLE_UAC": // (null)
                     {
                         bypass.enableUAC();
